@@ -1,0 +1,427 @@
+h1{
+    margin-left: 40%;
+    margin-top: 2% !important;
+    font-weight: bolder !important;
+}
+#welcoming-par{
+    margin-left: 8% !important;
+    font-size: 1.2vw;
+}
+.btn_div{
+    margin-top: 2%;
+    margin-left: 25%;
+    width: 50%;
+}
+input{
+    width: 100%;
+    border: 2px solid !important;
+    border-radius: 20px !important;
+}
+img{
+    width: 55% !important;
+}
+/*//////////////////////////////*/
+.login_div{
+    margin-top: 2% !important;
+    width: 80%;
+}
+svg{
+    width: 1.5%;
+    height: 2%;
+    margin-left: 3%;
+    margin-top: 2%;
+}
+#login-paragraph1{
+    font-size: large;
+    margin-left: 30%;
+    margin-top: 3%;
+}
+#login-span{
+    font-size: large;
+    font-weight: bold;
+}
+/* //////////////input style///////////// */
+.form-control{
+    margin-left: 20%;
+    width: 50% !important;
+    border: 2px solid gray!important;
+    border-radius: 4px !important;
+    background-color: white !important;
+}
+.form-label{
+    margin-left: 20%;
+}
+#btn-login{
+    width: 50%;
+    height: 6.5vh;
+    margin-left: 20%;
+    margin-top: 2%;
+    border: 1px solid;
+    border-radius: 10px;
+}
+#login-paragraph2{
+    font-size: large;
+    margin-left: 35%;
+    margin-top: 3%;
+}
+/* /////////////////////////////////// */
+#signup-paragraph1{
+    font-size: large;
+    margin-left: 37%;
+    margin-top: 3%;
+}
+/* ///////////////////////////////////// */
+a{
+    text-decoration: none !important;
+    color: black !important;
+}
+/* ///////////////////// media //////////////////// */
+/* ////////////////index.html///////////////////// */
+@media (max-width: 281px) {
+    h1{
+        margin-left: 18% !important;
+        margin-top: 15% !important;
+        font-size: 1.5rem !important;
+    }
+    .h1, h1 {
+        font-size: 1.5rem !important;
+    }
+}
+@media (max-width: 321px) {
+  #welcoming-par{
+      font-size: 3.5vw !important;
+  }
+}
+@media (max-width: 376px) {
+    #welcoming-par{
+        font-size: 3.5vw !important;
+    }
+  }
+@media (max-width: 391px) {
+    h1{
+        margin-left: 28% !important;
+        margin-top: 15% !important;
+    }
+    .h1, h1 {
+        font-size: 1.5rem !important;
+    }
+    h5{
+        font-size: 1.0rem !important;
+ 
+    }
+}
+@media (max-width: 426px) {
+    h1{
+        margin-left: 28% !important;
+        margin-top: 15% !important;
+    }
+    .h1, h1 {
+        font-size: 1.5rem !important;
+    }
+    #welcoming-par{
+        font-size: 3.5vw !important;
+    }
+}
+@media (max-width: 769px) {
+    h1{
+        margin-left: 36% !important;
+        margin-top: 15% !important;
+    }
+    .h1, h1 {
+        font-size: 1.9rem !important;
+    }
+    #welcoming-par{
+        font-size: 2.5vw !important;
+    }
+}
+/* ////////////////login page///////////////////// */
+@media (max-width: 281px) {
+    #login-paragraph2 {
+        font-size: 4vw;
+        margin-left: 8%;
+       
+    }
+    #login-paragraph1 {
+        font-size: 4vw;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    a{
+        font-size: 4vw;
+    }
+    .form-control {
+        margin-left: 10%;
+        width: 80% !important;
+        height: 4vh;
+    }
+    .form-label {
+        margin-left: 10%;
+    }
+    #btn-login {
+        height: 5.5vh;
+        font-size: 4vw;
+    }
+}
+@media (max-width: 321px) {
+    #login-paragraph2 {
+        font-size: 4vw;
+        margin-left: 8%;
+       
+    }
+    #login-paragraph1 {
+        font-size: 4vw;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    a{
+        font-size: 4vw;
+    }
+    .form-control {
+        margin-left: 10%;
+        width: 80% !important;
+        height: 4vh;
+    }
+    .form-label {
+        margin-left: 10%;
+    }
+    #btn-login {
+        height: 5.5vh;
+        font-size: 4vw;
+    }
+}
+@media (max-width: 376px) {
+    #login-paragraph2 {
+        font-size: 4vw;
+        margin-left: 15%;
+       
+    }
+    #login-paragraph1 {
+        font-size: 4vw;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    a{
+        font-size: 4vw;
+    }
+    .form-control {
+        margin-left: 10%;
+        width: 80% !important;
+        height: 4vh;
+    }
+    .form-label {
+        margin-left: 10%;
+    }
+    #btn-login {
+        height: 5.5vh;
+        font-size: 4vw;
+    }
+  }
+
+@media (max-width: 426px) {
+    #login-paragraph2 {
+        font-size: 4vw;
+        margin-left: 15%;
+       
+    }
+    #login-paragraph1 {
+        font-size: 4vw;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    a{
+        font-size: 4vw;
+    }
+    .form-control {
+        margin-left: 10%;
+        width: 80% !important;
+        height: 4.5vh;
+    }
+    .form-label {
+        margin-left: 10%;
+    }
+    #btn-login {
+        height: 5.9vh;
+        font-size: 4vw;
+    }
+}
+@media (max-width: 769px) {
+    h1{
+        font-size: 4.5vw !important;
+        margin-left: 42% !important;
+    }
+    #login-paragraph2 {
+        font-size: 3vw ;
+        margin-left: 19% ;
+       
+    }
+    #login-paragraph1 {
+        font-size: 3vw;
+        margin-left: 19%;
+        margin-top: 5%;
+    }
+    a{
+        font-size: 3vw;
+    }
+    .form-control {
+        margin-left: 10%;
+        width: 80% !important;
+        height: 4.5vh;
+    }
+    .form-label {
+        margin-left: 10%;
+    }
+    #btn-login {
+        height: 5.9vh;
+        font-size: 3vw;
+    }
+}
+/* ////////////////signup page///////////////////// */
+@media only screen and (max-width: 281px) {
+    #login-paragraph2 {
+        font-size: 4vw;
+        margin-left: 8%;
+    }
+    a{
+        font-size: 4vw;
+    }
+    .form-control {
+        margin-left: 10%;
+        width: 80% !important;
+        height: 4vh;
+    }
+    .form-label {
+        margin-left: 10%;
+    }
+    #btn-login {
+        height: 5.5vh;
+        font-size: 4vw;
+    }
+
+    #signup-paragraph1 {
+        font-size: 5vw;
+        margin-left: 15%;
+        margin-top: 4%;
+    }
+    h1 {
+        font-size: 6.5vw !important;
+        margin-left: 35% !important;
+        margin-top: 2% !important;
+    }
+    svg {
+        width: 3%;
+    }
+}
+@media only screen and (max-width: 321px) {
+    h1 {
+        font-size: 6.5vw !important;
+        margin-left: 35% !important;
+        margin-top: 2% !important;
+    }
+    svg {
+        width: 3%;
+    }
+    #signup-paragraph1 {
+        font-size: 5vw;
+        margin-left: 15%;
+        margin-top: 4%;
+    }
+    #login-paragraph2 {
+        font-size: 4vw;
+        margin-left: 12%;
+    }
+}
+    @media only screen and (max-width: 391px) {
+        h1 {
+            font-size: 6.5vw !important;
+            margin-left: 35% !important;
+            margin-top: 2% !important;
+        }
+        svg {
+            width: 3%;
+        }
+        #signup-paragraph1 {
+            font-size: 5vw;
+            margin-left: 15%;
+            margin-top: 4%;
+        }
+        #login-paragraph2 {
+            font-size: 4vw;
+            margin-left: 12%;
+        }
+}
+@media only screen and (max-width: 426px) {
+    h1 {
+        font-size: 6.5vw !important;
+        margin-left: 35% !important;
+        margin-top: 2% !important;
+    }
+    svg {
+        width: 3%;
+    }
+    #signup-paragraph1 {
+        font-size: 5vw;
+        margin-left: 15%;
+        margin-top: 4%;
+    }
+    #login-paragraph2 {
+        font-size: 4vw;
+        margin-left: 12%;
+    }
+    a{
+        font-size: 4vw;
+    }
+}
+@media only screen and (max-width: 769px) {
+    h1 {
+        font-size: 6.0vw !important;
+        margin-left: 35% !important;
+        margin-top: 2% !important;
+    }
+    svg {
+        width: 3%;
+    }
+    #signup-paragraph1 {
+        font-size: 3vw;
+        margin-left: 26%;
+    }
+    #login-paragraph2 {
+        font-size: 3vw;
+        margin-left: 20%;
+    }
+    a{
+        font-size: 3.6vw;
+    }
+    #btn-login {
+        width: 40%;
+        height: 4.9vh;
+        margin-left: 25%;
+        font-size: 2vw;
+    }
+}
+@media only screen and (max-width: 769px) {
+    h1 {
+        font-size: 6.0vw !important;
+        margin-left: 35% !important;
+        margin-top: 2% !important;
+    }
+    svg {
+        width: 3%;
+    }
+    #signup-paragraph1 {
+        font-size: 3vw;
+        margin-left: 26%;
+    }
+    #login-paragraph2 {
+        font-size: 3vw;
+        margin-left: 20%;
+    }
+    a{
+        font-size: 3.6vw;
+    }
+    #btn-login {
+        width: 40%;
+        height: 4.9vh;
+        margin-left: 25%;
+        font-size: 2vw;
+    }
+}
