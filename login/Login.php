@@ -31,7 +31,7 @@ session_start();
             }
         }
         if($loginEmail_correct && $loginPassword_correct)
-            header('location:http://localhost/project4/php/welcome.php');
+            header('location:http://localhost/project4/project4/php/welcome.php');
         else
         echo '<script language="javascript">';
         echo 'alert("Incorrect Information")'; 
@@ -53,7 +53,7 @@ session_start();
             $adminEmail_correct=false;
         }
         if ($adminEmail_correct && $adminPass_correct ){
-            header('location:http://localhost/project4/Admin.php');
+            header('location:http://localhost/project4/project4/Admin.php');
         }
     }
 ?>

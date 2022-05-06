@@ -90,7 +90,7 @@ if (isset($_POST['submit'])){
             'Password Confirmation'=> $_SESSION['confirmPassword']
         );
        
-        header('location:http://localhost/project4/login/Login.php');
+        header('location:http://localhost/project4/project4/login/Login.php');
     }
 }
 ?>
