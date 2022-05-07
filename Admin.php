@@ -30,12 +30,12 @@ setCookie('fullName', date("H:i:s-m/d/y"), 60*24*60*60+time());
             </thead>  
             <tbody>
                 <tr>
-                  <th scope="row"><?php echo $_SERVER['REMOTE_ADDR'] ?></th>
-                  <td><?php echo $_SESSION['fullName'] ;?> </td>
-                  <td><?php echo $_SESSION['email'] ;?></td>
-                  <td><?php echo $_SESSION['password'] ;?></td>
-                  <td><?php echo $_SESSION['date_creat'] ;?></td>
-                  <td><?php echo $_COOKIE['fullName']; ?></td>
+                  <th scope="row"><?php if(isset($_SERVER['REMOTE_ADDR'])) {echo $_SERVER['REMOTE_ADDR'];}  ?></th>
+                  <td><?php  if(isset($_SESSION['fullName'])) {echo $_SESSION['fullName'];} ?> </td>
+                  <td><?php if(isset($_SESSION['email'])) {echo $_SESSION['email'];} ?></td>
+                  <td><?php  if(isset($_SESSION['password'])) {echo  $_SESSION['password'];}?></td>
+                  <td><?php  if(isset($_SESSION['date_creat'])) {echo $_SESSION['date_creat'];} ?></td>
+                  <td><?php  if(isset($_COOKIE['fullName'])) {echo  $_COOKIE['fullName'];}?></td>
                 </tr>
               </tbody> 
         </table>

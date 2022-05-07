@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-$name_regex="/^([a-zA-Z' ]+)$/";
-$pass_regex="/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/";
+$name_regex="/^(?!(?:\S*\s){4})([a-zA-Z\'\s]+)$/";
 $phone_regex="/[0-9]{14}/";
 $email_pattern="/([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/";
+$pass_regex="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/";
 
 if (isset($_POST['submit'])){
     $_SESSION['fullName']=$_POST['fullName'];
@@ -17,17 +17,15 @@ if (isset($_POST['submit'])){
     $_SESSION['array']=array('');
 
     // FullName check
-    if(preg_match($name_regex,$_SESSION['fullName'])){
-        $fullName_result="<span style=' color:green'>Correct Name</span> <br>";
+    if(preg_match($name_regex,$_SESSION['fullName'])){///preg_match////return true or false////////
         $fullName_correct=true;
     }else{
-        $fullName_result="<span style=' color:red'>InCorrect Name, your name should contain letters only</span> <br>";
+        $fullName_result="<span style=' color:red; font-size:1vw; margin-left:25%'>InCorrect Name, your name should contain letters only</span> <br>";
         $fullName_correct=false;
     }
     // mobile check
     if(preg_match($phone_regex,$_SESSION['mobile'])){
-        $mobile_result="<span style=' color:green'>Correct Phone Number</span> <br>";
-        $confirmPhone_correct=true;
+        $confirmmobile_correct=true;
     }
     else{
         $mobile_result="<span style=' color:red'>Incorrect Phone Number, phone number must consist of 14 digits</span> <br>";
@@ -35,7 +33,6 @@ if (isset($_POST['submit'])){
     }
     // date Of Birth check
     if((floor((time() - strtotime($_SESSION['dateOfBirth'])) / 31556926)) >16){
-        $dob_result="<span style=' color:green'>Your age is greater than 16</span> <br>";
         $confirmDob_correct=true;
     }
     
@@ -46,7 +43,6 @@ if (isset($_POST['submit'])){
 
      //Email check
     if(preg_match($email_pattern,$_SESSION['email'])){
-        $email_result="<span style=' color:green'>Correct Email</span> <br>";
         $email_correct=true;
     }
     else{
@@ -56,31 +52,29 @@ if (isset($_POST['submit'])){
     
 	 //Password check
      if(preg_match($pass_regex,$_SESSION['password'])){
-        $password_result="<span style=' color:green'>Correct Password</span> <br>";
         $password_correct=true;
     }
     else{
         $password_result="<span style=' color:red'>Incorrect Password, the password shoud have:<br>1- 8 characters at least<br>2- At least one uppercase letter<br>3- One lowercase letter<br>4- At least one digit<br>5- At least one special character </span> <br>";
         $paswword_correct=false;
     }
+    
      //Confirm Password
      if(preg_match($pass_regex,$_SESSION['confirmPassword'])){
         if ($_SESSION['confirmPassword'] == $_SESSION['password']){
             $password_match=true;
             $confirmPassword_correct=true;
-            $confirmPassword_result="<span style=' color:green'>Correct Password</span> <br>";
         }
         else{
             $password_match=false;
             $confirmPassword_result="<span style=' color:red'>Password doesn't match</span> <br>";
-        }
-        
+        } 
     }
     else{
         $confirmPassword_result="<span style=' color:red'>Incorrect Password, your password shoud have:<br>1- 8 characters at least<br>2- At least one uppercase English letter<br>3- At least one lowercase English letter<br>4- At least one digit<br>5- At least one special character </span> <br>";
         $confirmPaswword_correct=false;
     }   
-    if($fullName_correct && $email_correct && $confirmPassword_correct && $confirmmobile_correct && $confirmDob_correct){
+    if($fullName_correct && $confirmmobile_correct && $confirmDob_correct && $email_correct && $confirmPassword_correct){
         $_SESSION['array']=array(
             'full Name'=> $_SESSION['fullName'],
             'Mobile Number'=> $_SESSION['mobile'],
@@ -90,7 +84,7 @@ if (isset($_POST['submit'])){
             'Password Confirmation'=> $_SESSION['confirmPassword']
         );
        
-        header('location:http://localhost/project4/project4/login/Login.php');
+        header('location: http://localhost/project4/project4/login/Login.php');
     }
 }
 ?>
@@ -111,10 +105,10 @@ if (isset($_POST['submit'])){
   <div class="container login_div">
   <h1>Sign up</h1>
   <p id="signup-paragraph1">Create an Account ,It's free! </p>
-    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+    <form  method="post">
       <div class="mb-3">
-        <label for="Full name" class="form-label">Full name</label>
-        <input type="text" class="form-control" name="fullName" id="Full name" required placeholder="Enter your name from four sections">
+        <label for="Full-name" class="form-label">Full name</label>
+        <input type="text" class="form-control" name="fullName" id="Full-name" placeholder="Enter your name from four sections" required >
         <?php if(isset($fullName_result)){echo $fullName_result;}?>
       </div>
       <div class="mb-3">
@@ -144,7 +138,7 @@ if (isset($_POST['submit'])){
         <?php if(isset($confirmPassword_result)){echo $confirmPassword_result;}?>
       </div>
       <div class="mb-3">
-        <input type="submit" class="btn btn-dark" value="Sign Up" id="btn-login">
+        <input type="submit" class="btn btn-dark" name="submit" value="Sign Up" id="btn-login">
       </div>
       <p id="login-paragraph2">Already have an account?<span id="login-span"> <a href="../login/Login.php"> Login</a></span> </p>
     </form>
