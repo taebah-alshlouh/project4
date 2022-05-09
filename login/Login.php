@@ -9,25 +9,19 @@ session_start();
         $adminEmail_correct=true;
         $adminPass_correct=true;
     
-        foreach ($_SESSION['array'] as $key => $value) {
-            //Check  the email
-            if($key == 'Email'){
-                if($_SESSION['email']==($value||'taebah@gmail.com')){
-                    $loginEmail_correct=true;
-                }else{
-                    $loginEmail_result="<span style=' color:red'>Incorrect Email</span><br>";
-                    $loginEmail_correct=false;
-                }
-            }
-            //Check the password
-            if($key == 'Password Confirmation'){
-                if($_SESSION['password']==$value){
-                    $loginPassword_correct=true;
-                }else{
-                    $loginPassword_result="<span style=' color:red'>Incorrect Password</span><br>";
-                    $loginPassword_correct=false;
-                }
-            }
+        foreach ($_SESSION['array'] as $value) {
+            //Check  the email validation
+                if($_SESSION['email']==($value['Email']||'taebah@gmail.com')){
+                    $loginEmail_correct=true;}
+                else{
+                    $loginEmail_result="<span style=' color:red; font-size:1vw; margin-left:25%'>Invalid Email</span><br>";
+                    $loginEmail_correct=false;}
+            //Check the password validation
+                if($_SESSION['password']==$value['Password']){
+                    $loginPassword_correct=true;}
+                else{
+                    $loginPassword_result="<span style=' color:red; font-size:1vw; margin-left:25%'>Invalid Password</span><br>";
+                    $loginPassword_correct=false;}
         }
         if($loginEmail_correct && $loginPassword_correct)
             header('location: http://localhost/project4/project4/php/welcome.php');
@@ -43,11 +37,11 @@ session_start();
                 $adminPass_correct=true;
         
             }else{
-                $loginPassword_result="<span style=' color:red'>Incorrect Password</span><br>";
+                $loginPassword_result="<span style=' color:red; font-size:1vw; margin-left:25%'>Invalid Password</span><br>";
                 $adminPass_correct=false;
             }
         }else{
-            $loginEmail_result="<span style=' color:red'>Incorrect Email</span><br>";
+            $loginEmail_result="<span style=' color:red; font-size:1vw; margin-left:25%'>Invalid Email</span><br>";
             $adminEmail_correct=false;
         }
         if ($adminEmail_correct && $adminPass_correct ){
@@ -76,10 +70,14 @@ session_start();
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com">
+        <?php if(isset($loginEmail_result))
+        {echo $loginEmail_result;}?>
       </div>
       <div class="mb-3">
         <label for="pass" class="form-label">Password</label>
         <input type="password" class="form-control" name="password" id="pass" placeholder="Enter the password">
+        <?php if(isset($loginPassword_result))
+        {echo $loginPassword_result;}?>
       </div>
       <div class="mb-3">
         <input type="submit" class="btn btn-dark" name="submit" value="Login" id="btn-login">

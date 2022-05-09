@@ -1,10 +1,13 @@
 <?php
 
 session_start();
+
+
 $name_regex="/^(?!(?:\S*\s){4})([a-zA-Z\'\s]+)$/";
 $phone_regex="/[0-9]{14}/";
 $email_pattern="/([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/";
 $pass_regex="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/";
+
 
 if (isset($_POST['submit'])){
     $_SESSION['fullName']=$_POST['fullName'];
@@ -13,14 +16,14 @@ if (isset($_POST['submit'])){
     $_SESSION['email']=$_POST['email'];
     $_SESSION['password']=$_POST['password'];
     $_SESSION['confirmPassword']=$_POST['confirmPassword'];
-    $_SESSION['date_creat']=date("Y-m-d");
-    $_SESSION['array']=array('');
+    $_SESSION['date_creation']=date("Y-m-d");
+   
 
     // FullName check
     if(preg_match($name_regex,$_SESSION['fullName'])){///preg_match////return true or false////////
         $fullName_correct=true;
     }else{
-        $fullName_result="<span style=' color:red; font-size:1vw; margin-left:25%'>InCorrect Name, your name should contain letters only</span> <br>";
+        $fullName_result="<span style=' color:red; font-size:0.8vw; margin-left:20%;'>Invalid Name, your name should contain letters only,or contain four sections</span> <br>";
         $fullName_correct=false;
     }
     // mobile check
@@ -28,7 +31,7 @@ if (isset($_POST['submit'])){
         $confirmmobile_correct=true;
     }
     else{
-        $mobile_result="<span style=' color:red'>Incorrect Phone Number, phone number must consist of 14 digits</span> <br>";
+        $mobile_result="<span style=' color:red; font-size:1vw; margin-left:20%;'>Invalid Phone Number, phone number must consist of 14 digits</span> <br>";
         $confirmmobile_correct=false;
     }
     // date Of Birth check
@@ -37,7 +40,7 @@ if (isset($_POST['submit'])){
     }
     
     else{
-        $dob_result="<span style=' color:red'>you are too young to register</span> <br>";
+        $dob_result="<span style=' color:red; font-size:1vw; margin-left:20%;'>you are too young to register</span> <br>";
         $confirmDob_correct=false;
     }
 
@@ -46,7 +49,7 @@ if (isset($_POST['submit'])){
         $email_correct=true;
     }
     else{
-        $email_result="<span style=' color:red'>Incorrect Email</span> <br>";
+        $email_result="<span style=' color:red; font-size:1vw; margin-left:20%;'>Invalid Email</span> <br>";
         $email_correct=false;
     }
     
@@ -55,7 +58,7 @@ if (isset($_POST['submit'])){
         $password_correct=true;
     }
     else{
-        $password_result="<span style=' color:red'>Incorrect Password, the password shoud have:<br>1- 8 characters at least<br>2- At least one uppercase letter<br>3- One lowercase letter<br>4- At least one digit<br>5- At least one special character </span> <br>";
+        $password_result="<span style=' color:red; font-size:0.8vw; margin-left:20%;'>Invalid Password, the password shoud have: 8 characters at least,One uppercase letter,One lowercase letter,One digit,A special character </span> <br>";
         $paswword_correct=false;
     }
     
@@ -67,26 +70,34 @@ if (isset($_POST['submit'])){
         }
         else{
             $password_match=false;
-            $confirmPassword_result="<span style=' color:red'>Password doesn't match</span> <br>";
+            $confirmPassword_result="<span style=' color:red; font-size:1vw; margin-left:20%;'>Password doesn't match</span> <br>";
         } 
     }
     else{
-        $confirmPassword_result="<span style=' color:red'>Incorrect Password, your password shoud have:<br>1- 8 characters at least<br>2- At least one uppercase English letter<br>3- At least one lowercase English letter<br>4- At least one digit<br>5- At least one special character </span> <br>";
+        $confirmPassword_result="<span style=' color:red; font-size:0.8vw; margin-left:20%;'>Invalid Password, the password shoud have: 8 characters at least,One uppercase letter,One lowercase letter,One digit,A special character </span> <br>";
         $confirmPaswword_correct=false;
-    }   
+    }  
+
+    $_SESSION['array'];
+    if(empty($_SESSION["array"])){
+      $_SESSION["array"]= [];
+    }
+    
     if($fullName_correct && $confirmmobile_correct && $confirmDob_correct && $email_correct && $confirmPassword_correct){
-        $_SESSION['array']=array(
+        $user_Data=[
             'full Name'=> $_SESSION['fullName'],
             'Mobile Number'=> $_SESSION['mobile'],
             'Date Of Birth'=>$_SESSION['dateOfBirth'],
             'Email'=> $_SESSION['email'],
             'Password'=> $_SESSION['password'],
-            'Password Confirmation'=> $_SESSION['confirmPassword']
-        );
-       
+            'Password Confirmation'=> $_SESSION['confirmPassword'],
+            'Create Date'=>$_SESSION['date_creation']
+        ];
+        array_push($_SESSION['array'],$user_Data);
         header('location: http://localhost/project4/project4/login/Login.php');
+        exit();
     }
-}
+  }
 ?>
 
 <!DOCTYPE html>
@@ -108,34 +119,44 @@ if (isset($_POST['submit'])){
     <form  method="post">
       <div class="mb-3">
         <label for="Full-name" class="form-label">Full name</label>
-        <input type="text" class="form-control" name="fullName" id="Full-name" placeholder="Enter your name from four sections" required >
-        <?php if(isset($fullName_result)){echo $fullName_result;}?>
+        <input type="text" class="form-control" name="fullName" value="<?php if(isset($_SESSION['fullName']))
+        {echo $_SESSION['fullName'];}?>" id="Full-name" placeholder="Enter your name from four sections" required >
+        <?php if(isset($fullName_result))
+        {echo $fullName_result;}?>
       </div>
       <div class="mb-3">
         <label for="Mobile" class="form-label">Mobile</label>
-        <input type="number" class="form-control" name="mobile" id="Mobile" placeholder="Enter your phone number" required>
-        <?php if(isset($mobile_result)){echo $mobile_result;}?>
+        <input type="number" class="form-control" name="mobile" value="<?php if(isset($_SESSION['mobile']))
+        {echo $_SESSION['mobile'];}?>" id="Mobile" placeholder="Enter your phone number" required>
+        <?php if(isset($mobile_result))
+        {echo $mobile_result;}?>
       </div>      
       <div class="mb-3">
         <label for="dob" class="form-label">Date of Birth</label>
-        <input type="date" class="form-control" name="DOB" id="dob"  placeholder="DD-MM-YYYY" required>
-        <?php if(isset($dob_result)){echo $dob_result;}?>
+        <input type="date" class="form-control" name="DOB" value="<?php if(isset($_SESSION['dateOfBirth']))
+        {echo $_SESSION['dateOfBirth'];}?>" id="dob"  placeholder="DD-MM-YYYY" required>
+        <?php if(isset($dob_result))
+        {echo $dob_result;}?>
       </div>
     <div class="mb-3">
         <label for="Email" class="form-label">Email</label>
-        <input type="email" class="form-control" name="email" id="Email" placeholder="abc@gmail.com" required>
-        <?php if(isset($email_result)){echo $email_result;}?>
+        <input type="email" class="form-control" name="email" value="<?php if(isset($_SESSION['email']))
+        {echo $_SESSION['email'];}?>" id="Email" placeholder="abc@gmail.com" required>
+        <?php if(isset($email_result))
+        {echo $email_result;}?>
       </div>
       <div class="mb-3">
         <label for="Password" class="form-label">Password</label>
         <input type="password" class="form-control" name="password" id="Password" required>
-        <?php if(isset($password_result)){echo $password_result;}?>
+        <?php if(isset($password_result))
+        {echo $password_result;}?>
       </div>
 
       <div class="mb-3">
         <label for="c-password" class="form-label">Confirm Password</label>
         <input type="password" class="form-control" name="confirmPassword" id="c-password" required>
-        <?php if(isset($confirmPassword_result)){echo $confirmPassword_result;}?>
+        <?php if(isset($confirmPassword_result))
+        {echo $confirmPassword_result;}?>
       </div>
       <div class="mb-3">
         <input type="submit" class="btn btn-dark" name="submit" value="Sign Up" id="btn-login">

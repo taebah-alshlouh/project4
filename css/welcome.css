@@ -1,6 +1,6 @@
 .container{
     margin-left: 10%;
-    margin-top: 2%;
+    margin-top: 0%;
 }
 h1{
     font-size: larger;
@@ -8,5 +8,7 @@ h1{
 a{
     text-decoration: none;
     color: black;
-
+}
+html{
+    margin: 0;
 }
